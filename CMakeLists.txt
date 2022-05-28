@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.16)
+project(linux_c_workspace C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(fork_test fork_test.c)
+add_executable(byte_order byte_order.c)
+add_executable(check_byte_order check_byte_order.c)
+add_executable(checksum checksum.c)
+add_executable(multi_proc_basis multi_proc_basis.c)
+add_executable(sig_basis sig_basis.c)
+add_executable(multi_proc_signal multi_proc_signal.c)
+add_executable(test test.c)
+
+add_executable(multi_thrd_basis multi_thrd_basis.c)
+add_executable(philosopher Operating_System/philosopher.c)
+add_executable(philosopher_s Operating_System/philosopher_s.c)
+add_executable(producer_consumer Operating_System/producer_consumer.c)
+add_executable(producer_consumer_f Operating_System/producer_consumer_f.c)
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(multi_thrd_basis PRIVATE Threads::Threads)
+target_link_libraries(philosopher PRIVATE Threads::Threads)
+target_link_libraries(philosopher_s PRIVATE Threads::Threads)
+target_link_libraries(producer_consumer PRIVATE Threads::Threads)
+target_link_libraries(producer_consumer_f PRIVATE Threads::Threads)
+
+
+add_executable(pipe Operating_System/pipe.c)
+add_executable(cp Operating_System/cp.c)
+add_executable(test_o Operating_System/test_o.c)
+add_executable(tcp_single_prc tcp_single_prc_client.c)
+add_executable(tcp_single_proc_for tcp_single_proc_server.c)
+add_executable(tcp_echo_srv tcp_echo_srv.c)
+add_executable(tcp_echo_cli tcp_echo_cli.c)
